@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Peter Tan | Projects Portfolio</title>
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card: #121927;
+            --card-hover: #182235;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-hover: #93c5fd;
+            --border: #263247;
+            --max-width: 1100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(90%, var(--max-width));
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-container {
+            min-height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* Hero */
+
+        .hero {
+            padding: 120px 0 90px;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 1.15rem;
+        }
+
+        /* Sections */
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+            margin-bottom: 7px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* Skills */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            padding: 8px 14px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+
+            color: #dbeafe;
+            font-size: 0.9rem;
+        }
+
+        /* Projects */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+
+            padding: 30px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-hover);
+            border-color: #3b4b67;
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+        }
+
+        .project-role {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .project-role strong {
+            color: var(--text);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
+            margin-top: auto;
+            margin-bottom: 22px;
+        }
+
+        .tech {
+            padding: 5px 9px;
+
+            color: #bfdbfe;
+            background: rgba(96, 165, 250, 0.08);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+
+            border-radius: 6px;
+            font-size: 0.78rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Experience */
+
+        .experience-card {
+            padding: 30px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            margin-bottom: 18px;
+        }
+
+        .experience-header h3 {
+            font-size: 1.3rem;
+        }
+
+        .experience-role {
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        .experience-date {
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .experience-card p {
+            color: var(--muted);
+        }
+
+        /* Footer */
+
+        footer {
+            padding: 35px 0;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--muted);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 90px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 3.4rem;
+                letter-spacing: -2px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .experience-date {
+                white-space: normal;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+
+            <!-- Replace with your name -->
+            <a href="#" class="logo">
+                Peter Tan<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+
+            <div class="eyebrow">
+                SOFTWARE DEVELOPER
+            </div>
+
+            <!-- Replace with your name -->
+            <h1>
+                Peter Tan<span>.</span>
+            </h1>
+
+            <p>
+                A collection of software development projects spanning
+                web development, data analytics, and systems programming.
+            </p>
+
+        </div>
+    </header>
+
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>Projects</h2>
+                <p>Selected software development projects.</p>
+            </div>
+
+            <div class="projects">
+
+                <!-- Project 1 -->
+                <article class="project-card">
+
+                    <div class="project-number">01</div>
+
+                    <h3>
+                        Interactive OLAP Dashboard
+                    </h3>
+
+                    <p>
+                        A data analytics web application built using
+                        Python and Streamlit. The application allows
+                        users to filter, explore, and visualize metrics
+                        from the Steam Games dataset, including game
+                        statistics, reviews, and player activity.
+                    </p>
+
+                    <div class="project-role">
+                        <strong>Role:</strong>
+                        Sole application designer and developer;
+                        contributed to data preprocessing for analytics.
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech">Python</span>
+                        <span class="tech">Streamlit</span>
+                        <span class="tech">MySQL</span>
+                        <span class="tech">Data Analytics</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Wala3h/STADVDB_MCO1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View on GitHub →
+                    </a>
+
+                </article>
+
+
+                <!-- Project 2 -->
+                <article class="project-card">
+
+                    <div class="project-number">02</div>
+
+                    <h3>
+                        Forum Website
+                    </h3>
+
+                    <p>
+                        A full-stack forum application built using
+                        the MERN stack and Handlebars. The platform
+                        includes role-based access, communities,
+                        and post interactions such as replies,
+                        upvotes, and downvotes.
+                    </p>
+
+                    <div class="project-role">
+                        <strong>Role:</strong>
+                        Front-end designer and developer;
+                        implemented post interaction features.
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech">MongoDB</span>
+                        <span class="tech">Express</span>
+                        <span class="tech">React</span>
+                        <span class="tech">Node.js</span>
+                        <span class="tech">Handlebars</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/CarandangR/CCAPDEV-MCO"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View on GitHub →
+                    </a>
+
+                </article>
+
+
+                <!-- Project 3 -->
+                <article class="project-card">
+
+                    <div class="project-number">03</div>
+
+                    <h3>
+                        Multitasking Operating System Emulator
+                    </h3>
+
+                    <p>
+                        A C++ project that emulates core operating
+                        system processes and concepts, including
+                        command processing, scheduling, memory
+                        management, and demand paging.
+                    </p>
+
+                    <div class="project-role">
+                        <strong>Role:</strong>
+                        Command processing implementation,
+                        Quality Assurance, and display design.
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech">C++</span>
+                        <span class="tech">Operating Systems</span>
+                        <span class="tech">Scheduling</span>
+                        <span class="tech">Memory Management</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/saxzeee/CSOPESY-Machine-Project"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View on GitHub →
+                    </a>
+
+                </article>
+
+
+                <!-- Project 4 -->
+                <article class="project-card">
+
+                    <div class="project-number">04</div>
+
+                    <h3>
+                        Ride Booking Website Mockup
+                    </h3>
+
+                    <p>
+                        A transportation website prototype designed
+                        to help students find transportation around
+                        the DLSU Laguna Campus. The application
+                        includes rider, driver, and administrator roles.
+                    </p>
+
+                    <div class="project-role">
+                        <strong>Role:</strong>
+                        Front-end designer and developer.
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech">React</span>
+                        <span class="tech">Material UI</span>
+                        <span class="tech">Node.js</span>
+                        <span class="tech">Express</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/jeanneeugenie/STSWENG-XX23"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View on GitHub →
+                    </a>
+
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>Skills</h2>
+                <p>Languages/Tools Used</p>
+            </div>
+
+            <div class="skills">
+
+                <span class="skill">C++</span>
+                <span class="skill">Python</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+
+                <span class="skill">React</span>
+                <span class="skill">Streamlit</span>
+                <span class="skill">Material UI</span>
+
+                <span class="skill">Node.js</span>
+                <span class="skill">Express.js</span>
+
+                <span class="skill">MongoDB</span>
+                <span class="skill">MySQL</span>
+
+                <span class="skill">Git</span>
+                <span class="skill">GitHub</span>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>Experience</h2>
+                <p>Professional development experience.</p>
+            </div>
+
+            <div class="experience-card">
+
+                <div class="experience-header">
+
+                    <div>
+                        <h3>
+                            Ollopa Corporation
+                        </h3>
+
+                        <div class="experience-role">
+                            Software Developer Intern ·
+                            Frontend Team Lead
+                        </div>
+                    </div>
+
+                    <div class="experience-date">
+                        2026
+                    </div>
+
+                </div>
+
+                <p>
+                    Worked as a frontend developer on an HR-focused
+                    web application and served as the frontend team
+                    lead. Contributed to frontend development,
+                    UI implementation, and coordination of frontend
+                    development work.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                © <span id="year"></span> Peter Tan
+            </p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
